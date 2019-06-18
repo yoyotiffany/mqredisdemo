@@ -31,7 +31,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public int insert(User record) {
-        return 0;
+        return userMapper.insert(record);
     }
 
     @Override

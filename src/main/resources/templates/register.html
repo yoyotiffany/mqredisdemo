@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个HTML页面</title>
+</head>
+<body>
+<form th:action="@{/user/register}"  method="post">
+
+    <input  type="text" id="pname" name="pname">
+
+    <input type="password" id="pwd" name="pwd">
+    <button type="submit"> zhuce</button>
+    <!--就是UserController类中的map.put("msg","用户名或密码错误")-->
+    <p th:text="${msg}"></p>
+</form>
+</body>
+</html>
