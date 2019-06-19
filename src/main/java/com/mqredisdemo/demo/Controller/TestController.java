@@ -28,22 +28,35 @@ public class TestController {
         return "register";
     }
 
-    @RequestMapping("/getAllUser")
-    @ResponseBody
-    public Result getAllUser() {
-        UserExample example = new UserExample();
-        List<User> list = userService.selectByExample(example);
-        Result result = new Result();
-        result.setRows(list);
-        result.setTotal(list.size());
-        return result;
-    }
+//    @RequestMapping("/getAllUser")
+//    @ResponseBody
+//    public Result getAllUser() {
+//
+//        List<User> list = userService.selectByExample(example);
+//        Result result = new Result();
+//        result.setRows(list);
+//        result.setTotal(list.size());
+//        return result;
+//    }
 
     @RequestMapping("/register")
-    public void register(User user) {
-String newpwd=user.getPwd();
-user.setPwd(MD5Util.encodePwd(newpwd));
+    public String register(User user) {
+        String newpwd = user.getPwd();
+        user.setPwd(MD5Util.encodePwd(newpwd));
         userService.insert(user);
+        return "login";
+    }
+
+    @RequestMapping("/login")
+    public String login(User user) {
+        UserExample example = new UserExample();
+          example.createCriteria().andPnameEqualTo(user.getPname());
+        List<User> list=    userService.selectByExample(example);
+        MD5Util.isRightPwd(user.getPwd(),list.get(0).getPname());
+      if ( MD5Util.isRightPwd(user.getPwd(),list.get(0).getPwd())){
+          return "index";
+      }
+      return "error";
     }
 
 }

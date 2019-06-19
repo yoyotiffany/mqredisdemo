@@ -21,7 +21,7 @@ public static String encodePwd(String userPwd) {
  * 解密
  */
 
-public Boolean isRightPwd(String pwd,String dbpwd){
+public static Boolean isRightPwd(String pwd,String dbpwd){
     Boolean result=false;
   String newpwd=  encodePwd(pwd);
     if (newpwd.equals(dbpwd)){
