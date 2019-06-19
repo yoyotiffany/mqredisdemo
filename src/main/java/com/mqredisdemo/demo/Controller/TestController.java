@@ -1,32 +1,42 @@
 package com.mqredisdemo.demo.Controller;
 
 import com.mqredisdemo.demo.Common.MD5Util;
-import com.mqredisdemo.demo.Common.Result;
 import com.mqredisdemo.demo.Entity.User;
 import com.mqredisdemo.demo.Entity.UserExample;
 import com.mqredisdemo.demo.Service.UserService;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sun.tools.internal.ws.processor.model.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
 public class TestController {
-
+    @Autowired
+    RedisTemplate<String,String> redisTemplate;
     @Autowired
     UserService userService;
 
     @RequestMapping("/test")
     public String test() {
+        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+        opsForValue.set("y","qian");
+        System.out.println("11"+opsForValue.get("y"));
+
         return "register";
     }
+
+
 
 //    @RequestMapping("/getAllUser")
 //    @ResponseBody
@@ -58,5 +68,8 @@ public class TestController {
       }
       return "error";
     }
+
+
+
 
 }
