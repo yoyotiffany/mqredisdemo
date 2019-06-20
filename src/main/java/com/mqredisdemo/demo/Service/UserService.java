@@ -1,31 +1,9 @@
 package com.mqredisdemo.demo.Service;
 
-import com.mqredisdemo.demo.Entity.User;
-import com.mqredisdemo.demo.Entity.UserExample;
-import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
+import org.springframework.stereotype.Service;
 
-public interface UserService {
-    int countByExample(UserExample example);
 
-    int deleteByExample(UserExample example);
+public interface UserService{
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    List<User> selectByExample(UserExample example);
-
-    User selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
 }
