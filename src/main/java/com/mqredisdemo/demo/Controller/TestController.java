@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/user")
@@ -31,7 +32,8 @@ public class TestController {
     public String test() {
         ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
         opsForValue.set("y","qian");
-        System.out.println("11"+opsForValue.get("y"));
+        //opsForValue.set("a","add",5, TimeUnit.SECONDS);
+        System.out.println("11"+opsForValue.get("a"));
 
         return "register";
     }
