@@ -21,6 +21,7 @@ public class test {
     public static void main(String[] args) {
 //redis集群1111
 //yq-1 first commit
+        //没通过再次提交
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         // 最大连接数
         poolConfig.setMaxTotal(1);
