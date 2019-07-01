@@ -19,8 +19,8 @@ import java.util.Set;
 public class test {
 
     public static void main(String[] args) {
-//redis集群1111
-
+//yq2gen
+//1111
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         // 最大连接数
         poolConfig.setMaxTotal(1);
