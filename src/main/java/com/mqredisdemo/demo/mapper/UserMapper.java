@@ -21,6 +21,8 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    @Select("select a.id id,a.userid userid,a.truename truename,a.addr addr,b.pname pname from user_info a,user b where a.userid=b.id and b.pname=#{pname}")
+   // @Select("select a.id id,a.userid userid,a.truename truename,a.addr addr,b.pname pname from user_info a,user b where a.userid=b.id and b.pname=#{pname}")
+
     public UserVO getUserInfo(String pname);
+//yoyo2gen
 }
