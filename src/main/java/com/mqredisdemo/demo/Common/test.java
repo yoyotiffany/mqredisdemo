@@ -19,7 +19,7 @@ import java.util.Set;
 public class test {
 
     public static void main(String[] args) {
-//redis集群
+//redis集群1111
 
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         // 最大连接数
