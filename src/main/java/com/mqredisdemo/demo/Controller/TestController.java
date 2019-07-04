@@ -29,14 +29,21 @@ public class TestController {
 
     @RequestMapping("/test")
     public String test() {
-        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
-        opsForValue.set("y","qian");
-        System.out.println("11"+opsForValue.get("y"));
+//        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+//        opsForValue.set("y","qian");
+//        System.out.println("11"+opsForValue.get("y"));
 
         return "register";
     }
 
+    @RequestMapping("/main")
+    public String main() {
+//        ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
+//        opsForValue.set("y","qian");
+//        System.out.println("11"+opsForValue.get("y"));
 
+        return "main";
+    }
 
 //    @RequestMapping("/getAllUser")
 //    @ResponseBody
@@ -54,16 +61,20 @@ public class TestController {
         String newpwd = user.getPwd();
         user.setPwd(MD5Util.encodePwd(newpwd));
         userService.insert(user);
+
         return "login";
     }
 
     @RequestMapping("/login")
-    public String login(User user) {
+    public String login(HttpServletRequest request,User user) {
         UserExample example = new UserExample();
           example.createCriteria().andPnameEqualTo(user.getPname());
         List<User> list=    userService.selectByExample(example);
-        MD5Util.isRightPwd(user.getPwd(),list.get(0).getPname());
+       // MD5Util.isRightPwd(user.getPwd(),list.get(0).getPname());
       if ( MD5Util.isRightPwd(user.getPwd(),list.get(0).getPwd())){
+         HttpSession session=request.getSession();
+         session.setAttribute("user",list.get(0));
+        session.setMaxInactiveInterval(5);
           return "index";
       }
       return "error";
