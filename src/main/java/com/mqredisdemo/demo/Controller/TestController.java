@@ -32,7 +32,7 @@ public class TestController {
         ValueOperations<String, String> opsForValue = redisTemplate.opsForValue();
         opsForValue.set("y","qian");
         System.out.println("11"+opsForValue.get("y"));
-
+//yq-1修改
         return "register";
     }
 
