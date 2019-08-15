@@ -23,6 +23,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class TestController {
     @Autowired
+            //ddddddddddddddd
     RedisTemplate<String,String> redisTemplate;
     @Autowired
     UserService userService;
