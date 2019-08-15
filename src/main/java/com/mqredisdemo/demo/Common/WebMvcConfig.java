@@ -13,9 +13,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-        if(!registry.hasMappingForPattern("/static/**")){
-            registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        }
+//        if(!registry.hasMappingForPattern("/static/**")){
+//            registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+//        }
         super.addResourceHandlers(registry);
     }
 }
